@@ -1,0 +1,35 @@
+.fon-weather {
+  background: linear-gradient(to bottom left, #66ff33 0%, #ffff00 100%);
+  width: 675px;
+  height: 338px;
+  position: relative;
+}
+
+#weather-temp {
+  font-size: 100pt;
+  position: relative;
+  color: #fff;
+  padding-bottom: 10px;
+  margin: 10px 0;;
+  top: 100px;
+}
+
+.fon-weather img {
+  width: 150px;
+  position: absolute;
+  left: 540px;
+  top: 0px;
+  animation-name: ic-weath;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+}
+
+@keyframes ic-weath {
+  0% {left: 0px; top: 0px; opacity: 0.3;}
+  20% {left: 135px; top: 20px}
+  40% {left: 270px; top: 0;}
+  60% {left: 405px; top: 20px;}
+  80% {left: 540px; top: 0px;}
+  90% {transform: rotate(40deg);}
+  100% {opacity: 1;}
+}

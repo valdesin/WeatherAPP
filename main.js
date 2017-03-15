@@ -20,7 +20,7 @@ xhr.onreadystatechange = function() {
   var data = JSON.parse(this.responseText);
   var weather = {};
 
-  weather.temp = data.main.temp;
+  weather.temp = parseInt(data.main.temp)+"\u2103";
   //weather.imageURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
   weather.city = data.name;
 

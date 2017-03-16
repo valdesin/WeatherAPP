@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans');
 *{
   font-family: 'Droid Sans', sans-serif;
+  color: #fff;
 }
 
 .fon-weather {
@@ -14,7 +15,6 @@
   font-size: 100pt;
 
   position: relative;
-  color: #fff;
   padding-bottom: 10px;
   margin: 10px 0;;
   top: 100px;
@@ -46,8 +46,14 @@
 
 #weather-city {
   font-size: 30pt;
-  color: #fff;
   position: relative;
-  top: -200px;
+  top: -270px;
   margin: 60px 20px;
+}
+
+#max-temp, #min-temp {
+  position: relative;
+  right: -300px;
+  top: -30px;
+  
 }

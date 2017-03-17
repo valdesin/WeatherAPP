@@ -4,7 +4,7 @@
   color: #fff;
 }
 
-.fon-weather {
+#fon-weather {
   background-color: #0066FF;
   width: 675px;
   height: 338px;
@@ -20,7 +20,7 @@
   top: 100px;
 }
 
-.fon-weather img {
+#fon-weather img {
   width: 150px;
   position: absolute;
   left: 520px;
@@ -30,7 +30,7 @@
   animation-timing-function: linear;
 }
 
-.fon-weather img:hover{
+#fon-weather img:hover{
   transform: rotate(40deg);
 }
 
@@ -55,5 +55,5 @@
   position: relative;
   right: -300px;
   top: -30px;
-  
+
 }

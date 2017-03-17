@@ -3,6 +3,8 @@ var temp;
 var icon;
 var city;
 var maxTemp, minTemp;
+var night;
+var iconWeather;
 
 var xhr = new XMLHttpRequest();
 
@@ -22,7 +24,8 @@ xhr.onreadystatechange = function() {
   var weather = {};
 
   weather.temp = parseInt(data.main.temp)+"\u2103";
-  //weather.imageURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+  weather.imageURL = data.weather[0].icon;
+  console.log(weather.imageURL[2]);
   weather.city = data.name;
   weather.maxTemp = data.main.temp_max;
   weather.minTemp = data.main.temp_min;
@@ -36,6 +39,10 @@ function update(weather) {
   city.innerHTML = weather.city;
   maxTemp.innerHTML = weather.maxTemp + "<sub>max</sub>";
   minTemp.innerHTML = weather.minTemp + "<sub>min</sub>";
+  if (weather.imageURL[2] == "n") {
+    night.style.background = "#006";
+    iconWeather.setAttribute("src", "images/moon.svg");
+  }
 };
 
 window.onload = function() {
@@ -44,4 +51,6 @@ window.onload = function() {
   city = document.getElementById("weather-city");
   maxTemp = document.getElementById("max-temp");
   minTemp = document.getElementById("min-temp");
+  night = document.getElementById("fon-weather");
+  iconWeather = document.getElementById("icon-weather");
 };

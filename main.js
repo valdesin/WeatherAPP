@@ -6,51 +6,60 @@ var maxTemp, minTemp;
 var night;
 var iconWeather;
 
-var xhr = new XMLHttpRequest();
 
-xhr.open("GET", url, true);
+function connect() {
+  var xhr = new XMLHttpRequest();
 
-xhr.send();
+  xhr.open("GET", url, true);
 
-xhr.onreadystatechange = function() {
+  xhr.send();
 
-  if(this.readyState != 4) return;
+  xhr.onreadystatechange = function() {
 
-  if(this.status != 200) {
-    alert("Error" + this.status ? statusText : "downloding error!");
-  }
+    if(this.readyState != 4) return;
 
-  var data = JSON.parse(this.responseText);
-  var weather = {};
+    if(this.status != 200) {
+      alert("Error" + this.status ? statusText : "downloding error!");
+    }
 
-  weather.temp = parseInt(data.main.temp)+"\u2103";
-  weather.imageURL = data.weather[0].icon;
-  console.log(weather.imageURL[2]);
-  weather.city = data.name;
-  weather.maxTemp = data.main.temp_max;
-  weather.minTemp = data.main.temp_min;
+    var data = JSON.parse(this.responseText);
+    var weather = {};
 
-  update(weather)
+    weather.temp = parseInt(data.main.temp)+"\u2103";
+    weather.imageURL = data.weather[0].icon;
+    console.log(weather.imageURL[2]);
+    weather.city = data.name;
+    weather.maxTemp = data.main.temp_max;
+    weather.minTemp = data.main.temp_min;
+
+    update(weather)
+  };
 };
 
-function update(weather) {
-  temp.innerHTML = weather.temp;
-  //icon.setAttribute("src", weather.imageURL);
-  city.innerHTML = weather.city;
-  maxTemp.innerHTML = weather.maxTemp + "<sub>max</sub>";
-  minTemp.innerHTML = weather.minTemp + "<sub>min</sub>";
-  if (weather.imageURL[2] == "n") {
-    night.style.background = "#006";
-    iconWeather.setAttribute("src", "images/moon.svg");
-  }
-};
+  function update(weather) {
+    temp.innerHTML = weather.temp;
+    //icon.setAttribute("src", weather.imageURL);
+    city.innerHTML = weather.city;
+    maxTemp.innerHTML = weather.maxTemp + "<sub>max</sub>";
+    minTemp.innerHTML = weather.minTemp + "<sub>min</sub>";
+    if (weather.imageURL[2] == "n") {
+      night.style.background = "#006";
+      iconWeather.setAttribute("src", "images/moon.svg");
+    }
+  };
 
-window.onload = function() {
-  temp = document.getElementById("weather-temp");
-  //icon = document.getElementById("weather-icon");
-  city = document.getElementById("weather-city");
-  maxTemp = document.getElementById("max-temp");
-  minTemp = document.getElementById("min-temp");
-  night = document.getElementById("fon-weather");
-  iconWeather = document.getElementById("icon-weather");
-};
+  window.onload = function() {
+    temp = document.getElementById("weather-temp");
+    //icon = document.getElementById("weather-icon");
+    city = document.getElementById("weather-city");
+    maxTemp = document.getElementById("max-temp");
+    minTemp = document.getElementById("min-temp");
+    night = document.getElementById("fon-weather");
+    iconWeather = document.getElementById("icon-weather");
+  };
+
+  connect();
+  setTimeout( function run() {
+    connect();
+    setTimeout(run(), 1800000);
+  }, 1800000);
